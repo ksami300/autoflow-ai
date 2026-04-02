@@ -1,0 +1,10 @@
+-- CreateTable
+CREATE TABLE "Plan" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "goal" TEXT NOT NULL,
+    "weight" INTEGER NOT NULL,
+    "height" INTEGER NOT NULL,
+    "activity" TEXT NOT NULL,
+    "result" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
