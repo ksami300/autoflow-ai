@@ -1,0 +1,18 @@
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const count = await prisma.plan.count({
+  where: {
+    userId: user.userId,
+    createdAt: {
+      gte: today,
+    },
+  },
+});
+
+if (!dbUser.isPro && count >= 1) {
+  return NextResponse.json(
+    { error: "Free limit reached" },
+    { status: 403 }
+  );
+}
