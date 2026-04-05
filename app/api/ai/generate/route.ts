@@ -11,7 +11,11 @@ export async function POST(req: Request) {
     const user = await prisma.user.findUnique({
       where: { id: userData.id },
     });
-
+  await prisma.usage.upsert({
+  where: { userId: user.id },
+  update: { count: { increment: 1 } },
+  create: { userId: user.id, count: 1 },
+});
     if (!user || user.plan !== "PRO") {
       return error("Upgrade to PRO", 403);
     }
